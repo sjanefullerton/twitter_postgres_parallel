@@ -121,7 +121,7 @@ def insert_tweet(connection,tweet):
             ON CONFLICT (id_users) DO NOTHING 
             ''')
 
-         connection.execute(sql, {
+        connection.execute(sql, {
             'id_users': tweet['user']['id'],
             'created_at': tweet['user']['created_at'],
             'updated_at': tweet['created_at'],
@@ -137,7 +137,7 @@ def insert_tweet(connection,tweet):
             'favourites_count':tweet['user']['favourites_count'],
             'statuses_count':tweet['user']['statuses_count'],
             'withheld_in_countries':tweet['user'].get('withheld_in_countries', None),
-        })
+            })
 
         ########################################
         # insert into the tweets table
@@ -243,12 +243,12 @@ def insert_tweet(connection,tweet):
         for url in urls:
             id_urls = get_id_urls(url['expanded_url'], connection)
 
-            sql=sqlalchemy.sql.text('''
-                INSERT INTO tweets_urls 
+            sql = sqlalchemy.sql.text('''
+                INSERT INTO tweet_urls 
                 (id_tweets, id_urls)
-                ON CONFLICT DO NOTHING
+                VALUES
+                (:id_tweets, :id_urls)
                 ''')
-
             res = connection.execute(sql, {
                 'id_tweets': tweet['id'],
                 'id_urls': id_urls
@@ -279,7 +279,7 @@ def insert_tweet(connection,tweet):
                 ON CONFLICT DO NOTHING
                 ''')
             res = connection.execute(sql, {
-                'id_users':menton['id']
+                'id_users':mention['id']
                 })
 
             # insert into tweet_mentions
@@ -291,9 +291,8 @@ def insert_tweet(connection,tweet):
                 ON CONFLICT DO NOTHING
                 ''')
             res=connection.execute(sql, {
-                'id_tweets':tweet['id',
-                'id_users':mention['id']
-                })
+                'id_tweets':tweet['id'],
+                'id_users':mention['id']})
 
         ########################################
         # insert into the tweet_tags table
