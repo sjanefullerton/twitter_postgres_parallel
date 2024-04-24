@@ -1,0 +1,266 @@
+================================================================================
+load pg_denormalized
+================================================================================
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+5.39user 1.56system 0:04.04elapsed 172%CPU (0avgtext+0avgdata 17716maxresident)k
+108360inputs+2800outputs (0major+52813minor)pagefaults 0swaps
+================================================================================
+load pg_normalized
+================================================================================
+2024-04-23 13:55:49.231426 data/geoTwitter21-01-03.zip
+2024-04-23 13:55:49.258945 data/geoTwitter21-01-03.zip - i= 0 id= 1345520246879346689
+2024-04-23 13:55:54.557665 data/geoTwitter21-01-03.zip - i= 1000 id= 1345520358007296002
+2024-04-23 13:56:00.183168 data/geoTwitter21-01-03.zip - i= 2000 id= 1345520465599733761
+2024-04-23 13:56:05.801046 data/geoTwitter21-01-03.zip - i= 3000 id= 1345520578309054465
+2024-04-23 13:56:11.575647 data/geoTwitter21-01-03.zip - i= 4000 id= 1345520688711434240
+2024-04-23 13:56:17.487036 data/geoTwitter21-01-03.zip - i= 5000 id= 1345520799013343233
+2024-04-23 13:56:23.386815 data/geoTwitter21-01-03.zip - i= 6000 id= 1345520903002730498
+2024-04-23 13:56:28.954664 data/geoTwitter21-01-03.zip - i= 7000 id= 1345521009101836290
+2024-04-23 13:56:34.489743 data/geoTwitter21-01-03.zip - i= 8000 id= 1345521104564215812
+2024-04-23 13:56:40.514466 data/geoTwitter21-01-03.zip - i= 9000 id= 1345521207790235648
+2024-04-23 13:55:49.246619 data/geoTwitter21-01-07.zip
+2024-04-23 13:55:49.276784 data/geoTwitter21-01-07.zip - i= 0 id= 1346969798157197316
+2024-04-23 13:55:54.592748 data/geoTwitter21-01-07.zip - i= 1000 id= 1346969884819787776
+2024-04-23 13:56:00.340691 data/geoTwitter21-01-07.zip - i= 2000 id= 1346969972032024576
+2024-04-23 13:56:05.843081 data/geoTwitter21-01-07.zip - i= 3000 id= 1346970060900986887
+2024-04-23 13:56:11.477705 data/geoTwitter21-01-07.zip - i= 4000 id= 1346970148712849415
+2024-04-23 13:56:17.520899 data/geoTwitter21-01-07.zip - i= 5000 id= 1346970235673300992
+2024-04-23 13:56:23.580063 data/geoTwitter21-01-07.zip - i= 6000 id= 1346970323246219265
+2024-04-23 13:56:29.286662 data/geoTwitter21-01-07.zip - i= 7000 id= 1346970411884453892
+2024-04-23 13:56:34.903832 data/geoTwitter21-01-07.zip - i= 8000 id= 1346970500598165508
+2024-04-23 13:56:40.974169 data/geoTwitter21-01-07.zip - i= 9000 id= 1346970588720590851
+2024-04-23 13:55:49.243296 data/geoTwitter21-01-01.zip
+2024-04-23 13:55:49.271201 data/geoTwitter21-01-01.zip - i= 0 id= 1344795471093633031
+2024-04-23 13:55:54.380375 data/geoTwitter21-01-01.zip - i= 1000 id= 1344795553989865473
+2024-04-23 13:56:00.236920 data/geoTwitter21-01-01.zip - i= 2000 id= 1344795640279265286
+2024-04-23 13:56:05.656772 data/geoTwitter21-01-01.zip - i= 3000 id= 1344795728426754049
+2024-04-23 13:56:11.222408 data/geoTwitter21-01-01.zip - i= 4000 id= 1344795817517981699
+2024-04-23 13:56:17.395044 data/geoTwitter21-01-01.zip - i= 5000 id= 1344795904700796930
+2024-04-23 13:56:23.415414 data/geoTwitter21-01-01.zip - i= 6000 id= 1344795992403681281
+2024-04-23 13:56:29.208963 data/geoTwitter21-01-01.zip - i= 7000 id= 1344796079125094401
+2024-04-23 13:56:34.949909 data/geoTwitter21-01-01.zip - i= 8000 id= 1344796167029346307
+2024-04-23 13:56:40.919169 data/geoTwitter21-01-01.zip - i= 9000 id= 1344796254472187911
+2024-04-23 13:55:49.232864 data/geoTwitter21-01-10.zip
+2024-04-23 13:55:49.264899 data/geoTwitter21-01-10.zip - i= 0 id= 1348056961783312384
+2024-04-23 13:55:54.458134 data/geoTwitter21-01-10.zip - i= 1000 id= 1348057063004524545
+2024-04-23 13:56:00.131809 data/geoTwitter21-01-10.zip - i= 2000 id= 1348057174644293636
+2024-04-23 13:56:05.725911 data/geoTwitter21-01-10.zip - i= 3000 id= 1348057285017350145
+2024-04-23 13:56:11.188342 data/geoTwitter21-01-10.zip - i= 4000 id= 1348057392710299648
+2024-04-23 13:56:17.041482 data/geoTwitter21-01-10.zip - i= 5000 id= 1348057506946441219
+2024-04-23 13:56:23.352125 data/geoTwitter21-01-10.zip - i= 6000 id= 1348057618066116614
+2024-04-23 13:56:29.075248 data/geoTwitter21-01-10.zip - i= 7000 id= 1348057727348699137
+2024-04-23 13:56:34.871150 data/geoTwitter21-01-10.zip - i= 8000 id= 1348057835763068936
+2024-04-23 13:56:41.106249 data/geoTwitter21-01-10.zip - i= 9000 id= 1348057943732858880
+2024-04-23 13:55:49.231180 data/geoTwitter21-01-05.zip
+2024-04-23 13:55:49.263256 data/geoTwitter21-01-05.zip - i= 0 id= 1346245022325346304
+2024-04-23 13:55:54.577407 data/geoTwitter21-01-05.zip - i= 1000 id= 1346245130425159681
+2024-04-23 13:56:00.101899 data/geoTwitter21-01-05.zip - i= 2000 id= 1346245244313067521
+2024-04-23 13:56:05.487389 data/geoTwitter21-01-05.zip - i= 3000 id= 1346245359744524289
+2024-04-23 13:56:10.987284 data/geoTwitter21-01-05.zip - i= 4000 id= 1346245471497375744
+2024-04-23 13:56:16.842419 data/geoTwitter21-01-05.zip - i= 5000 id= 1346245580096499715
+2024-04-23 13:56:23.122660 data/geoTwitter21-01-05.zip - i= 6000 id= 1346245693745360900
+2024-04-23 13:56:28.901613 data/geoTwitter21-01-05.zip - i= 7000 id= 1346245805280260097
+2024-04-23 13:56:34.781839 data/geoTwitter21-01-05.zip - i= 8000 id= 1346245913468170241
+2024-04-23 13:56:40.926101 data/geoTwitter21-01-05.zip - i= 9000 id= 1346246025791504386
+2024-04-23 13:55:49.231882 data/geoTwitter21-01-04.zip
+2024-04-23 13:55:49.264707 data/geoTwitter21-01-04.zip - i= 0 id= 1345882634702864384
+2024-04-23 13:55:54.618099 data/geoTwitter21-01-04.zip - i= 1000 id= 1345882733856260096
+2024-04-23 13:56:00.275537 data/geoTwitter21-01-04.zip - i= 2000 id= 1345882835887005697
+2024-04-23 13:56:05.929861 data/geoTwitter21-01-04.zip - i= 3000 id= 1345882930544050185
+2024-04-23 13:56:11.405292 data/geoTwitter21-01-04.zip - i= 4000 id= 1345883033593896961
+2024-04-23 13:56:17.207864 data/geoTwitter21-01-04.zip - i= 5000 id= 1345883134777307136
+2024-04-23 13:56:23.506177 data/geoTwitter21-01-04.zip - i= 6000 id= 1345883235813789696
+2024-04-23 13:56:29.276195 data/geoTwitter21-01-04.zip - i= 7000 id= 1345883341543804928
+2024-04-23 13:56:35.126614 data/geoTwitter21-01-04.zip - i= 8000 id= 1345883444585385990
+2024-04-23 13:56:41.208017 data/geoTwitter21-01-04.zip - i= 9000 id= 1345883542828556288
+2024-04-23 13:55:49.275206 data/geoTwitter21-01-06.zip
+2024-04-23 13:55:49.307207 data/geoTwitter21-01-06.zip - i= 0 id= 1346607410463571971
+2024-04-23 13:55:54.647679 data/geoTwitter21-01-06.zip - i= 1000 id= 1346607509872599040
+2024-04-23 13:56:00.350968 data/geoTwitter21-01-06.zip - i= 2000 id= 1346607618035384320
+2024-04-23 13:56:05.922726 data/geoTwitter21-01-06.zip - i= 3000 id= 1346607723874549763
+2024-04-23 13:56:11.739799 data/geoTwitter21-01-06.zip - i= 4000 id= 1346607828253908994
+2024-04-23 13:56:17.902797 data/geoTwitter21-01-06.zip - i= 5000 id= 1346607937658081281
+2024-04-23 13:56:24.238870 data/geoTwitter21-01-06.zip - i= 6000 id= 1346608044478750720
+2024-04-23 13:56:29.982763 data/geoTwitter21-01-06.zip - i= 7000 id= 1346608156202381312
+2024-04-23 13:56:35.689936 data/geoTwitter21-01-06.zip - i= 8000 id= 1346608267175342080
+2024-04-23 13:56:41.798693 data/geoTwitter21-01-06.zip - i= 9000 id= 1346608375434510337
+2024-04-23 13:55:49.229866 data/geoTwitter21-01-02.zip
+2024-04-23 13:55:49.254761 data/geoTwitter21-01-02.zip - i= 0 id= 1345157858732732416
+2024-04-23 13:55:54.645675 data/geoTwitter21-01-02.zip - i= 1000 id= 1345157965662322699
+2024-04-23 13:56:00.380465 data/geoTwitter21-01-02.zip - i= 2000 id= 1345158082922483720
+2024-04-23 13:56:05.872423 data/geoTwitter21-01-02.zip - i= 3000 id= 1345158200153280518
+2024-04-23 13:56:11.579016 data/geoTwitter21-01-02.zip - i= 4000 id= 1345158320651444225
+2024-04-23 13:56:17.575364 data/geoTwitter21-01-02.zip - i= 5000 id= 1345158438754672641
+2024-04-23 13:56:23.837032 data/geoTwitter21-01-02.zip - i= 6000 id= 1345158549882556416
+2024-04-23 13:56:29.769332 data/geoTwitter21-01-02.zip - i= 7000 id= 1345158670234112007
+2024-04-23 13:56:35.679146 data/geoTwitter21-01-02.zip - i= 8000 id= 1345158786491719680
+2024-04-23 13:56:41.995861 data/geoTwitter21-01-02.zip - i= 9000 id= 1345158904876032018
+2024-04-23 13:55:49.240589 data/geoTwitter21-01-08.zip
+2024-04-23 13:55:49.264957 data/geoTwitter21-01-08.zip - i= 0 id= 1347332185930543104
+2024-04-23 13:55:54.830212 data/geoTwitter21-01-08.zip - i= 1000 id= 1347332282340798464
+2024-04-23 13:56:00.686120 data/geoTwitter21-01-08.zip - i= 2000 id= 1347332389136191489
+2024-04-23 13:56:06.401266 data/geoTwitter21-01-08.zip - i= 3000 id= 1347332491074437120
+2024-04-23 13:56:12.347092 data/geoTwitter21-01-08.zip - i= 4000 id= 1347332600864657408
+2024-04-23 13:56:18.244277 data/geoTwitter21-01-08.zip - i= 5000 id= 1347332706267496450
+2024-04-23 13:56:24.385250 data/geoTwitter21-01-08.zip - i= 6000 id= 1347332810445623298
+2024-04-23 13:56:30.087684 data/geoTwitter21-01-08.zip - i= 7000 id= 1347332913856196609
+2024-04-23 13:56:35.821666 data/geoTwitter21-01-08.zip - i= 8000 id= 1347333021385551872
+2024-04-23 13:56:42.059343 data/geoTwitter21-01-08.zip - i= 9000 id= 1347333130055806976
+2024-04-23 13:55:49.230516 data/geoTwitter21-01-09.zip
+2024-04-23 13:55:49.258863 data/geoTwitter21-01-09.zip - i= 0 id= 1347694574018453504
+2024-04-23 13:55:54.640856 data/geoTwitter21-01-09.zip - i= 1000 id= 1347694663432605696
+2024-04-23 13:56:00.380249 data/geoTwitter21-01-09.zip - i= 2000 id= 1347694753442312193
+2024-04-23 13:56:06.011655 data/geoTwitter21-01-09.zip - i= 3000 id= 1347694846962769926
+2024-04-23 13:56:11.821063 data/geoTwitter21-01-09.zip - i= 4000 id= 1347694940822896640
+2024-04-23 13:56:17.953886 data/geoTwitter21-01-09.zip - i= 5000 id= 1347695034255237120
+2024-04-23 13:56:24.144266 data/geoTwitter21-01-09.zip - i= 6000 id= 1347695129918722049
+2024-04-23 13:56:29.880573 data/geoTwitter21-01-09.zip - i= 7000 id= 1347695222709387268
+2024-04-23 13:56:35.699681 data/geoTwitter21-01-09.zip - i= 8000 id= 1347695321917349889
+2024-04-23 13:56:42.015658 data/geoTwitter21-01-09.zip - i= 9000 id= 1347695415504891904
+282.42user 28.65system 1:00.01elapsed 518%CPU (0avgtext+0avgdata 46472maxresident)k
+27904inputs+4288outputs (52major+216523minor)pagefaults 0swaps
+================================================================================
+load pg_normalized_batch
+================================================================================
+2024-04-23 13:56:49.216483 data/geoTwitter21-01-01.zip
+2024-04-23 13:56:50.286509 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.224188 data/geoTwitter21-01-08.zip
+2024-04-23 13:56:50.282267 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.219823 data/geoTwitter21-01-04.zip
+2024-04-23 13:56:50.313527 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.230271 data/geoTwitter21-01-03.zip
+2024-04-23 13:56:50.314553 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.269900 data/geoTwitter21-01-02.zip
+2024-04-23 13:56:50.339353 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.224321 data/geoTwitter21-01-07.zip
+2024-04-23 13:56:50.333655 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.269973 data/geoTwitter21-01-09.zip
+2024-04-23 13:56:50.361053 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.267040 data/geoTwitter21-01-05.zip
+2024-04-23 13:56:50.391785 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.267650 data/geoTwitter21-01-10.zip
+2024-04-23 13:56:50.379769 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+2024-04-23 13:56:49.351877 data/geoTwitter21-01-06.zip
+2024-04-23 13:56:50.584898 insert_tweets i= 0
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 432, in <module>
+    insert_tweets(connection,tweets,args.batch_size)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 149, in insert_tweets
+    _insert_tweets(connection, tweet_batch)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 368, in _insert_tweets
+    with connection.begin() as trans:
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 867, in begin
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQLAlchemy Transaction() object via begin() or autobegin; can't call begin() here unless rollback() or commit() is called first.
+Command exited with non-zero status 10
+19.42user 1.61system 0:02.74elapsed 767%CPU (0avgtext+0avgdata 204172maxresident)k
+272inputs+3248outputs (0major+488265minor)pagefaults 0swaps
