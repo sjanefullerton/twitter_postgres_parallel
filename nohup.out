@@ -264,3 +264,1672 @@ sqlalchemy.exc.InvalidRequestError: This connection has already initialized a SQ
 Command exited with non-zero status 10
 19.42user 1.61system 0:02.74elapsed 767%CPU (0avgtext+0avgdata 204172maxresident)k
 272inputs+3248outputs (0major+488265minor)pagefaults 0swaps
+================================================================================
+load pg_denormalized
+================================================================================
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+COPY 10000
+5.55user 1.49system 0:05.46elapsed 129%CPU (0avgtext+0avgdata 17732maxresident)k
+109064inputs+2728outputs (5major+52732minor)pagefaults 0swaps
+================================================================================
+load pg_normalized
+================================================================================
+2024-04-23 21:18:53.396227 data/geoTwitter21-01-06.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 751088707734831104, 'created_at': 'Thu Jul 07 16:21:17 +0000 2016', 'updated_at': 'Wed Jan 06 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 1253, 'listed_count': 0, 'favourites_count': 449, 'statuses_count': 827, 'protected': False, 'verified': False, 'screen_name': 'FatsLamuntuKyrd', 'name': 'Martin Mosehle', 'location': 'Polokwane', 'description': 'MC| Performing Artist| Radio Presenter @RadioTurf| Sema2020 Award Winner.\nbooking: fatslamuntukyrd@gmail.com or call: 0767289445'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.430610 data/geoTwitter21-01-07.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "urls" does not exist
+LINE 2:     insert into urls 
+                        ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 113, in insert_tweet
+    user_id_urls = get_id_urls(tweet['user']['url'], connection)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 58, in get_id_urls
+    res = connection.execute(sql,{'url':url}).first()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "urls" does not exist
+LINE 2:     insert into urls 
+                        ^
+
+[SQL: 
+    insert into urls 
+        (url)
+        values
+        (%(url)s)
+    on conflict do nothing
+    returning id_urls
+    ;
+    ]
+[parameters: {'url': 'http://therossowenshow.com'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.431886 data/geoTwitter21-01-02.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 2433927221, 'created_at': 'Mon Mar 24 19:13:19 +0000 2014', 'updated_at': 'Sat Jan 02 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 313, 'listed_count': 0, 'favourites_count': 36059, 'statuses_count': 4650, 'protected': False, 'verified': False, 'screen_name': 'hisham5632', 'name': 'هشام حميد', 'location': 'ينبع, المملكة العربية السعودية', 'description': '\u200f\u200f\u200f\u200f.أهوى الأدب العربي\nكل ما تجده هنا اقتباسات أعجبت بها\nاللهم اجعلها شاهد لي لا علي'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.442277 data/geoTwitter21-01-04.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "urls" does not exist
+LINE 2:     insert into urls 
+                        ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 113, in insert_tweet
+    user_id_urls = get_id_urls(tweet['user']['url'], connection)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 58, in get_id_urls
+    res = connection.execute(sql,{'url':url}).first()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "urls" does not exist
+LINE 2:     insert into urls 
+                        ^
+
+[SQL: 
+    insert into urls 
+        (url)
+        values
+        (%(url)s)
+    on conflict do nothing
+    returning id_urls
+    ;
+    ]
+[parameters: {'url': 'https://profcard.info/u/CdAQKXlp0XOI9EAkkIo79bnn2qw1'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.434530 data/geoTwitter21-01-08.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 489724297, 'created_at': 'Sat Feb 11 20:33:17 +0000 2012', 'updated_at': 'Fri Jan 08 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 638, 'listed_count': 7, 'favourites_count': 16295, 'statuses_count': 26495, 'protected': False, 'verified': False, 'screen_name': 'one_n_emillion_', 'name': 'em', 'location': 'tx', 'description': 'gemini pescatarian'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.432494 data/geoTwitter21-01-10.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 1122211946516963328, 'created_at': 'Sat Apr 27 18:52:32 +0000 2019', 'updated_at': 'Sun Jan 10 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 910, 'listed_count': 0, 'favourites_count': 11592, 'statuses_count': 6233, 'protected': False, 'verified': False, 'screen_name': 'PaulieA93', 'name': 'Paul', 'location': '🇨🇦', 'description': 'Huge supporter of #Leafsforever #GOPACKGO #Sporting_CP #Selecaoportugal #Ticats #Metallica 🇨🇦🇵🇹'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.432968 data/geoTwitter21-01-01.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 41278525, 'created_at': 'Wed May 20 02:42:09 +0000 2009', 'updated_at': 'Fri Jan 01 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 1377, 'listed_count': 17, 'favourites_count': 132200, 'statuses_count': 76452, 'protected': False, 'verified': False, 'screen_name': 'Thalassatx', 'name': 'Linda Tom', 'location': 'Euless, TX', 'description': 'University of Arkansas alum, Movie fan. Marvel fanatic. Former Republican voter who now votes blue to save lives. Gun owner who believes in sensible gun laws.'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.433055 data/geoTwitter21-01-03.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 2766532016, 'created_at': 'Mon Aug 25 14:28:11 +0000 2014', 'updated_at': 'Sun Jan 03 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 1360, 'listed_count': 0, 'favourites_count': 57708, 'statuses_count': 32486, 'protected': False, 'verified': False, 'screen_name': 'augelliale', 'name': 'Alemdq', 'location': 'Mar del Plata, Argentina', 'description': 'Bostero. Hincha de Peñarol basquet. Martillero y corredor. Tachero novato. Sabinero. Fotos de Mardel. Chistes malos.,Taxista 2020\n#historiasdeltaxi #soyrolando'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.439306 data/geoTwitter21-01-05.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "urls" does not exist
+LINE 2:     insert into urls 
+                        ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 113, in insert_tweet
+    user_id_urls = get_id_urls(tweet['user']['url'], connection)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 58, in get_id_urls
+    res = connection.execute(sql,{'url':url}).first()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "urls" does not exist
+LINE 2:     insert into urls 
+                        ^
+
+[SQL: 
+    insert into urls 
+        (url)
+        values
+        (%(url)s)
+    on conflict do nothing
+    returning id_urls
+    ;
+    ]
+[parameters: {'url': 'http://instagram.com/anderson_bragaa'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-04-23 21:18:53.518615 data/geoTwitter21-01-09.zip
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 384, in <module>
+    insert_tweet(connection,tweet)
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets.py", line 125, in insert_tweet
+    res = connection.execute(sql, {
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1849, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1989, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2356, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1970, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id_urls" of relation "users" does not exist
+LINE 3:             (id_users, created_at, updated_at, id_urls, frie...
+                                                       ^
+
+[SQL: 
+            INSERT INTO users
+            (id_users, created_at, updated_at, id_urls, friends_count, listed_count, favourites_count, statuses_count, protected, verified, screen_name, name, location, description) 
+            VALUES
+            (%(id_users)s, %(created_at)s, %(updated_at)s, %(id_urls)s, %(friends_count)s, %(listed_count)s, %(favourites_count)s, %(statuses_count)s, %(protected)s, %(verified)s, %(screen_name)s, %(name)s, %(location)s, %(description)s)
+            ON CONFLICT DO NOTHING
+            returning id_users
+                ]
+[parameters: {'id_users': 924744976248066054, 'created_at': 'Sun Oct 29 21:09:18 +0000 2017', 'updated_at': 'Sat Jan 09 00:00:00 +0000 2021', 'id_urls': None, 'friends_count': 420, 'listed_count': 0, 'favourites_count': 23132, 'statuses_count': 5687, 'protected': False, 'verified': False, 'screen_name': 'MrKrastor', 'name': '🜃євгенія🜁', 'location': 'mushroom valley', 'description': 'Tumnë talmar rahtainë nixenen umir'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Command exited with non-zero status 10
+4.55user 0.54system 0:00.90elapsed 566%CPU (0avgtext+0avgdata 44820maxresident)k
+48168inputs+2728outputs (73major+95595minor)pagefaults 0swaps
+================================================================================
+load pg_normalized_batch
+================================================================================
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sfullerton24/twitter_postgres_parallel/load_tweets_batch.py", line 416, in <module>
+    connection = engine.connect()
+                 ^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2443, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sfullerton24/python/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 7449?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Command exited with non-zero status 10
+4.11user 0.48system 0:00.78elapsed 589%CPU (0avgtext+0avgdata 43956maxresident)k
+400inputs+2656outputs (0major+95000minor)pagefaults 0swaps
